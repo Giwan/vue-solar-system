@@ -1,6 +1,10 @@
 <template>
     <div>
-        <ItemsList msg="message from parent" :planets="planets" />
+        <ItemsList
+            msg="message from parent"
+            :planets="planets"
+            @selectPlanet="this.selectPlanet"
+        />
         <PlanetDetail v-if="selectedPlanet" />
     </div>
 </template>
@@ -8,6 +12,7 @@
 <script>
 import ItemsList from "./components/ItemsList";
 import PlanetDetail from "./components/PlanetDetail";
+import { loadData } from "./data/data";
 
 export default {
     name: "App",
@@ -19,19 +24,12 @@ export default {
         this.loadData();
     },
     methods: {
-        loadData: async function() {
-            const resp = await fetch("/data.json");
-
-            if (!resp.ok) {
-                throw new Error("failed to get json data");
-            }
-
-            this.planets = await resp.json();
-        }
+        loadData
     },
     data: function() {
         return {
-            planets: []
+            planets: [],
+            selectedPlanet: undefined
         };
     }
 };
