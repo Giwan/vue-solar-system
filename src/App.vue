@@ -1,14 +1,19 @@
 <template>
-    <ItemsList msg="message from parent" :planets="data" />
+    <div>
+        <ItemsList msg="message from parent" :planets="planets" />
+        <PlanetDetail v-if="selectedPlanet" />
+    </div>
 </template>
 
 <script>
-import ItemsList from "./components/ItemsList.vue";
+import ItemsList from "./components/ItemsList";
+import PlanetDetail from "./components/PlanetDetail";
 
 export default {
     name: "App",
     components: {
-        ItemsList
+        ItemsList,
+        PlanetDetail
     },
     created() {
         this.loadData();
@@ -21,14 +26,12 @@ export default {
                 throw new Error("failed to get json data");
             }
 
-            const data = await resp.json();
-            // debugger; //eslint-disable-line
-            this.data = data;
+            this.planets = await resp.json();
         }
     },
     data: function() {
         return {
-            data: []
+            planets: []
         };
     }
 };
