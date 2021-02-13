@@ -3,9 +3,13 @@
         <ItemsList
             msg="message from parent"
             :planets="planets"
-            @selectPlanet="this.selectPlanet"
+            :selectPlanet="this.selectPlanet"
         />
-        <PlanetDetail v-if="selectedPlanet" />
+        <PlanetDetail
+            v-if="selectedPlanet"
+            :selectedPlanet="this.selectedPlanet"
+            :close="this.selectPlanet"
+        />
     </div>
 </template>
 
@@ -24,7 +28,10 @@ export default {
         this.loadData();
     },
     methods: {
-        loadData
+        loadData,
+        selectPlanet: function(planet) {
+            this.selectedPlanet = planet;
+        }
     },
     data: function() {
         return {

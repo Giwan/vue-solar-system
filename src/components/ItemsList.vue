@@ -1,7 +1,7 @@
 <template>
     <main>
         <section v-for="planet in planets" :key="planet.name">
-            <header>
+            <header @click="selectPlanet(planet)">
                 <img :src="planet.image" width="100" :alt="planet.name" />
                 <h1>{{ planet.name }}</h1>
             </header>
@@ -14,7 +14,8 @@ export default {
     name: "ItemsList",
     props: {
         msg: String,
-        planets: Array
+        planets: Array,
+        selectPlanet: Function
     }
 };
 </script>
