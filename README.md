@@ -1,24 +1,10 @@
-# t
+# Demo App: Solar system
 
-## Project setup
-```
-yarn install
-```
+This is a simple demo using Vue. Click on each of the planets to view some more detail and description.
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## Development
 
-### Compiles and minifies for production
+```sh
+npm i # install dependencies
+npm run serve # run on local host.
 ```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
